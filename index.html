@@ -1,61 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1.0">
-	<title>Unit 9 Final Project</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<meta charset="UTF-8">
+	<title>Monk's Café</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<link rel="stylesheet" href="css/style.css">
+
 </head>
-<body>
-	<h1>Monk's Diner</h1>
-	<h4>"The coffee shop"</h4>
-	<img src="images/toms-restaurant.jpg" alt="">
+<body data-spy="scroll" data-target=".navbar-inverse" data-offset="50">
 
-	<h2>Reservations</h2>
-	<section id="reservations">
-		<div class="left">
-		<h3>Make a Reservation</h3>	
-		<form action="">
-			<input id="name" type="text" placeholder="Name">
-			<input id="day" type="text" placeholder="Day">
-			<button type="submit">Confirm</button>
-		</form>
+	<!-- template for reservation-list -->
+	<script id="reservation-template" type="text/x-handlebars-template">
+		<tr>
+			<td>{{name}}</td>
+			<td>{{day}}</td>
+		</tr>
+	</script>
+
+	<!-- navbar -->
+	<div id="navbar" class="navbar-collapse navbar-inverse collapse navbar-fixed-top">
+		<a href="#" class="navbar-brand">Monk's Café</a>
+		<ul class="nav navbar-nav navbar-right">
+		  <li class="active"><a href="#reservation">Reservation</a></li>
+		  <li><a href="#map">Map</a></li>
+		</ul>
+	</div>
+
+	<div class="container-fluid restaurant-pic">
+		<div class="row">
+			<div class="col-md-12"></div>
+		</div>
+	</div>
+
+	<div id="reservation" class="container-fluid reservation">
+
+		<!-- reservation form -->
+		<div class="row reservation-form-container">
+			<div class="col-md-12 text-center reservation-form">
+				<form class="form-inline reservations">
+				  <div class="form-group">
+				    <input type="text" class="form-control reservation-name" placeholder="Jane Doe">
+				  </div>
+				  <div class="form-group">
+						<div class="dropdown">
+						  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+						    Select A Day
+						    <span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu reservation-day">
+						    <li><a>Today</a></li>
+						    <li><a>Tomorrow</a></li>
+						    <li><a>The day after next</a></li>
+						  </ul>
+						</div>
+				  </div>
+				  <button class="btn btn-default reservation-button">Set Reservation</button>
+				</form>
+			</div>
 		</div>
 
-		<div class="right">
-			<h3>Existing Reservations</h3>
-			<table>
-				<thead>
-					<th>Name</th>
-					<th>Day</th>
-				</thead>
-				<tbody> [ form data will publish here ] </tbody>
-			</table>
-	  	</div>
-	</section> 	
+		<!-- reservations -->
+		<table class="table table-striped col-md-12 container-fluid">
+			<h4>Reservations</h4>
+			<thead>
+				<th>Name</th>
+				<th>Day</th>
+			</thead>
+			<tbody class="reservation-list"></tbody>
+		</table>
+	</div>
 
-	<h2>Come Dine with Us</h2>
-	
-	<div id="map"></div>
+	<!-- map -->
+	<div id="map" class="container-fluid restaurant-locator">
+	</div>
 
-	<h2>Customer Reviews</h2>
-	<section id="reviews">
-		
-		<div class="left">
-		<img src="images/jerry.jpg" alt="">
-		</div>
+	<!-- rating & hours
+	<div id="yelp" class="container-fluid yelp">
+		<h4>Check our current ratings and hours</h4>
+	</div> -->
 
-		<div class="right">
-			<p>"Big lettuce, big carrots, 
-			tomatoes like volleyballs."
-			- Jerry Seinfeld, on The BIG Salad</p>
-		</div>
-	</section>
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+  <!-- bootstrap js -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- handlebars -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+  <!-- custom js -->
+  <script src="js/main.js"></script>
 
-	
-
-	<script src="js/jquery-3.1.0.min.js"></script>
-	<script src="js/main.js"></script>
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCG1EBK7yswZfv1qFU__J1ffMrd7CgvEII&callback=initMap"></script>	
-</body>
-</html>
+   <!-- google maps -->   
+   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8dDufmORLDLnoq_QnYl49ALShBB2GAmY&callback=initMap"></script>    
+	<!-- Yelp
+	<script src="https://api.yelp.com"></script>  --> 
+	   
+</body> </html>
